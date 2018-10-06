@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+djangorestframework = "*"
+setuptools = "*"
+scrapy = "*"
+dj-database-url = "*"
+django-cors-headers = "*"
+"psycopg2" = "*"
+numpy = "*"
+requests = "*"
+twisted = {git = "https://github.com/twisted/twisted.git#egg=twisted"}
+"pypiwin32" = "*"
+
+[dev-packages]
+pylint = "*"
+
+[requires]
+python_version = "3.7"
