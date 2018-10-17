@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "8aceded272996d7cff787722dec10bc71c9614e7ad6c6ea5218bc3db22f7fcb4"
+            "sha256": "5653adb7e119d93b02dd5b19515862f459f3801e43355a3e45d07527c453fd52"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -128,9 +128,6 @@
             ],
             "markers": "python_version != '3.3.*' and python_version >= '2.7' and python_version != '3.2.*' and python_version != '3.1.*' and python_version != '3.0.*'",
             "version": "==1.0.3"
-        },
-        "d875d8c": {
-            "path": "C:/Users/dtskhondia-n/twisted-trunk"
         },
         "dj-database-url": {
             "hashes": [
@@ -349,6 +346,13 @@
             "index": "pypi",
             "version": "==223"
         },
+        "python-decouple": {
+            "hashes": [
+                "sha256:1317df14b43efee4337a4aa02914bf004f010cd56d6c4bd894e6474ec8c4fe2d"
+            ],
+            "index": "pypi",
+            "version": "==3.1"
+        },
         "pytz": {
             "hashes": [
                 "sha256:a061aa0a9e06881eb8b3b2b43f05b9439d6583c206d0a6c340ff72a7b6669053",
@@ -409,7 +413,7 @@
         },
         "twisted": {
             "git": "https://github.com/twisted/twisted.git",
-            "ref": "c0f1394c7bfb04d97c725a353a1f678fa6a1c602"
+            "ref": "b49c78ca9e200507b86be5a460912150132850f3"
         },
         "urllib3": {
             "hashes": [
@@ -430,12 +434,22 @@
             "hashes": [
                 "sha256:21506674d30c009271fe68a242d330c83b1b9d76d62d03d87e1e9528c61beea6",
                 "sha256:3d184aff0756c44fff7de69eb4cd5b5311b6f452d4de28cb08343b3f21993763",
+                "sha256:40c89d3a4e7e6c20db80be638a0a2be103b659ae3b2fc92e25ef1c7ac11be798",
+                "sha256:425e1458d7b893f3ae2fb1bd8344e7bb0beaa114cdc91299c797442638021a17",
                 "sha256:467d364b24cb398f76ad5e90398d71b9325eb4232be9e8a50d6a3b3c7a1c8789",
+                "sha256:4d17483ec4177ee085e690d8d4104de913392250bc50f41fb240c9f378bfb88b",
                 "sha256:57c38470d9f57e37afb460c399eb254e7193ac7fb8042bd09bdc001981a9c74c",
+                "sha256:727aa737a48dd33d6859296f15edb54e85ccdfa5667513f7a50daf362b3df75b",
+                "sha256:7307f7e341f47f057756e1e0e9f5bad85d4cf55a6a8aaafe681e2e5e5dd79446",
                 "sha256:9ada83f4384bbb12dedc152bcdd46a3ac9f5f7720d43ac3ce3e8e8b91d733c10",
                 "sha256:a1daf9c5120f3cc6f2b5fef8e1d2a3fb7bbbb20ed4bfdc25bc8364bc62dcf54b",
+                "sha256:aa1f22d5380d440c78bd9b13dbe697292422277a30eeabcd0ba66b6e37a25ef1",
+                "sha256:b445e2d58d8faa94a9ae863ed10c661e05d7ba6ce00548867a0153e6d927e4a2",
+                "sha256:c2a0ba07228921393b0e28d7306bf8652d5d392cff7eea3f4c0ba599b28f85de",
                 "sha256:e6b77ae84f2b8502d99a7855fa33334a1eb6159de45626905cb3e454c023f339",
                 "sha256:e881ef610ff48aece2f4ee2af03d2db1a146dc7c705561bd6089b2356f61641f",
+                "sha256:ec3cdfb92f714fc02aaf390ee34e7fa636a0478a0976733ac2b39bc23b11a095",
+                "sha256:ef4b9bf3ff28a874a2becda91c281ef4dbc89f9ceacfb1d11040893080a48e18",
                 "sha256:f41037260deaacb875db250021fe883bf536bf6414a4fd25b25059b02e31b120"
             ],
             "markers": "python_version != '3.2.*' and python_version != '3.3.*' and python_version != '3.1.*' and python_version >= '2.7' and python_version != '3.0.*'",
@@ -452,11 +466,11 @@
         },
         "colorama": {
             "hashes": [
-                "sha256:463f8483208e921368c9f306094eb6f725c6ca42b0f97e313cb5d5512459feda",
-                "sha256:48eb22f4f8461b1df5734a074b57042430fb06e1d61bd1e11b078c0fe6d7a1f1"
+                "sha256:a3d89af5db9e9806a779a50296b5fdb466e281147c2c235e8225ecc6dbf7bbf3",
+                "sha256:c9b54bebe91a6a803e0772c8561d53f2926bfeb17cd141fbabcb08424086595c"
             ],
             "markers": "sys_platform == 'win32'",
-            "version": "==0.3.9"
+            "version": "==0.4.0"
         },
         "isort": {
             "hashes": [
@@ -515,6 +529,20 @@
             ],
             "index": "pypi",
             "version": "==2.1.1"
+        },
+        "pylint-django": {
+            "hashes": [
+                "sha256:5dc5f85caef2c5f9e61622b9cbd89d94edd3dcf546939b2974d18de4fa90d676",
+                "sha256:bf313f10b68ed915a34f0f475cc9ff8c7f574a95302beb48b79c5993f7efd84c"
+            ],
+            "index": "pypi",
+            "version": "==2.0.2"
+        },
+        "pylint-plugin-utils": {
+            "hashes": [
+                "sha256:8ad25a82bcce390d1d6b7c006c123e0cb18051839c9df7b8bdb7823c53fe676e"
+            ],
+            "version": "==0.4"
         },
         "six": {
             "hashes": [

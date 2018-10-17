@@ -1,8 +1,9 @@
-from .models import Contest
+"""Serializers"""
 from rest_framework import serializers
+from .models import Contest
 
 class ContestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contest
-        fields = ('name','startTime','endTime','site')
+        fields = ('id', 'name', 'startTime', 'endTime', 'site')
     

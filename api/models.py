@@ -1,10 +1,11 @@
-# Create your models here.
-from __future__ import unicode_literals
-from django.db import models
+"""Models"""
 from datetime import datetime
+from django.db import models
 
 class Contest(models.Model):
-    defTime = datetime(year=2000,month=1,day=1)
+    """Contest Model"""
+    id = models.BigIntegerField
+    defTime = datetime(year=2000, month=1, day=1)
     name = models.CharField(max_length=255)
     startTime = models.DateTimeField(default=defTime)
     endTime = models.DateTimeField(default=defTime)
