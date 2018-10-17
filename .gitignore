@@ -23,6 +23,7 @@ var/
 .installed.cfg
 *.egg
 .bashrc
+.env
 .vscode/
 db.sqlite3
 
