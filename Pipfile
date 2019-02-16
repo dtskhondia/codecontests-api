@@ -14,8 +14,8 @@ django-cors-headers = "*"
 numpy = "*"
 requests = "*"
 twisted = {git = "https://github.com/twisted/twisted.git"}
-"pypiwin32" = "*"
 python-decouple = "*"
+"pypiwin32" = "*"
 
 [dev-packages]
 pylint = "*"
