@@ -5,5 +5,5 @@ from .models import Contest
 class ContestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contest
-        fields = ('id', 'name', 'startTime', 'endTime', 'site')
+        fields = ('id', 'name', 'startTime', 'endTime', 'site', 'url')
     

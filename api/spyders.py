@@ -5,17 +5,21 @@ import logging
 from . import services
 from django.utils import timezone
 from datetime import datetime,timedelta
+import pytz
 
 class AtCoderSpider(scrapy.Spider):
-    name="atCoder"
-    start_urls = ['http://atcoder.jp/contest']
+    #Spider Mandatory Fields
+    name="AtCoder"
+    start_urls = ['https://atcoder.jp/contests/']
+    
+    #Custom Fields
+    path = 'https://atcoder.jp'
+
     def parse(self, response):
         contests = response.xpath('//h3[contains(text(),"Upcoming Contests")]/following-sibling::div[1]//tbody/tr')
         for contest in contests:
             name = contest.xpath('td[2]//text()').extract_first() 
-            startTime = datetime.strptime(contest.xpath('td[1]//text()').extract_first(), '%Y/%m/%d %H:%M')
-            delta = timedelta(hours=9)
-            startTime -= delta
+            startTime = datetime.strptime(contest.xpath('td[1]//text()').extract_first(), '%Y-%m-%d %H:%M:%S%z').astimezone(pytz.utc)
             durationExtract = contest.xpath('td[3]//text()').extract_first().split(':') 
             durationExtract = list(map(int,durationExtract if len(durationExtract)>2 else ["00"]+durationExtract))
             duration = timedelta(days=durationExtract[0],hours=durationExtract[1],minutes=durationExtract[2])            
@@ -23,33 +27,38 @@ class AtCoderSpider(scrapy.Spider):
                 'name': name,
                 'startTime': startTime,
                 'endTime': startTime + duration,
-                'site':'AtCoder'
+                'site':AtCoderSpider.name,
+                'url':AtCoderSpider.path + contest.xpath('td[2]//@href').extract_first()
             })
 
 class CodeChefSpider(scrapy.Spider):
-    name="codeChef"
+    #Spider Mandatory Fields
+    name="CodeChef"
     start_urls = ['https://www.codechef.com/contests']
+    
+    #Custom Fields
+    path = 'https://www.codechef.com/'
+    
     def parse(self, response):
         contests = response.xpath('//h3[contains(text(),"Future Contests")]/following-sibling::div[1]//tbody/tr')
         for contest in contests:
-            name = contest.xpath('td[2]//text()').extract_first()
-            startTimeIST = datetime.strptime(contest.xpath('td[3]//@data-starttime').extract_first()[:19], '%Y-%m-%dT%H:%M:%S')
-            gmt = contest.xpath('td[3]//@data-starttime').extract_first()[19:]
-            delta = timedelta(hours=int(gmt[1:3]),minutes=int(gmt[4:6]))
-            startTime = (startTimeIST - delta if gmt[0]=='+' else startTimeIST + delta)
-            endTimeIST = datetime.strptime(contest.xpath('td[4]//@data-endtime').extract_first()[:19], '%Y-%m-%dT%H:%M:%S')
-            endTime = (endTimeIST - delta if gmt[0]=='+' else endTimeIST + delta)
             services.save_contest({
-                'name': name,
-                'startTime': startTime,
-                'endTime': endTime,
-                'site' : 'CodeChef'
+                'name': contest.xpath('td[2]//text()').extract_first(),
+                'startTime': datetime.strptime(contest.xpath('td[3]//@data-starttime').extract_first(), '%Y-%m-%dT%H:%M:%S%z').astimezone(pytz.utc),
+                'endTime': datetime.strptime(contest.xpath('td[4]//@data-endtime').extract_first(), '%Y-%m-%dT%H:%M:%S%z').astimezone(pytz.utc),
+                'site' : CodeChefSpider.name,
+                'url': CodeChefSpider.path + contest.xpath('td[1]//text()').extract_first()
             })
 
 
 class HackerRankSpider(scrapy.Spider):
-    name="hackerRank"
+    #Spider Mandatory Fields
+    name = "HackerRank"
     start_urls = ['https://www.hackerrank.com/contests']
+    
+    #Custom Fields
+    path = "https://www.hackerrank.com/contests"
+
     def parse(self, response):
         contests = response.xpath('//div[@data-contest-state="Active"]')
         for contest in contests:
@@ -63,5 +72,6 @@ class HackerRankSpider(scrapy.Spider):
                 'name': name,
                 'startTime': startTime,
                 'endTime': endTime,
-                'site' : 'HackerRank'
+                'site' : HackerRankSpider.name,
+                'url': HackerRankSpider.path
             })

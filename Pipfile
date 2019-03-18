@@ -16,6 +16,7 @@ requests = "*"
 twisted = {git = "https://github.com/twisted/twisted.git"}
 python-decouple = "*"
 "pypiwin32" = "*"
+pytz = "*"
 
 [dev-packages]
 pylint = "*"
