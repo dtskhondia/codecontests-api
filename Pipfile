@@ -15,7 +15,7 @@ numpy = "*"
 requests = "*"
 twisted = {git = "https://github.com/twisted/twisted.git"}
 python-decouple = "*"
-"pypiwin32" = {version = "*", os_name = "== 'windows'"}
+"pypiwin32" = {version = "*", sys_platform = "== 'win32'"}
 pytz = "*"
 
 [dev-packages]
