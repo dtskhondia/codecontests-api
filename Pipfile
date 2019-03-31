@@ -7,7 +7,6 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 setuptools = "*"
-scrapy = "*"
 dj-database-url = "*"
 django-cors-headers = "*"
 "psycopg2" = "*"
@@ -15,8 +14,9 @@ numpy = "*"
 requests = "*"
 twisted = {git = "https://github.com/twisted/twisted.git"}
 python-decouple = "*"
-"pypiwin32" = {version = "*", sys_platform = "== 'win32'"}
+pypiwin32 = {version = "*",sys_platform = "== 'win32'"}
 pytz = "*"
+scrapy = "*"
 
 [dev-packages]
 pylint = "*"
@@ -24,3 +24,6 @@ pylint-django = "*"
 
 [requires]
 python_version = "3.7"
+
+[pipenv]
+allow_prereleases = true
