@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "96bdb2fb8c2b3d854c3f19a88c08d9a06bb120e4a518ebf11c3a33f1b4fac549"
+            "sha256": "8a675917152f5bfa705bd9fbd9ac520c65db212fc5906493854a455af13cc0f6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -355,6 +355,7 @@
                 "sha256:9bd07746ce7f2198021a9fa187fa80df7b221ec5e4c234ab6f00ea355a3baf99"
             ],
             "index": "pypi",
+            "markers": "sys_platform == 'win32'",
             "version": "==224"
         },
         "queuelib": {
