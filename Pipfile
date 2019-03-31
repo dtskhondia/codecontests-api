@@ -17,6 +17,7 @@ python-decouple = "*"
 pypiwin32 = {version = "*",sys_platform = "== 'win32'"}
 pytz = "*"
 scrapy = "*"
+pywin32 = {version = "*",sys_platform = "== 'win32'"}
 
 [dev-packages]
 pylint = "*"
