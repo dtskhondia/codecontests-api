@@ -52,6 +52,6 @@ def save_contest(item):
     contestObj.save()
 
 def load_contests():
-  Contest.objects.all().delete()
+  #Contest.objects.all().delete()
   get_codeforce()
   get_crawl()
