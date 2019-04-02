@@ -4,7 +4,7 @@ from django.db import models
 
 class Contest(models.Model):
     """Contest Model"""
-    id = models.BigIntegerField
+    id = models.AutoField(primary_key=True)
     defTime = datetime(year=2000, month=1, day=1)
     name = models.CharField(max_length=255)
     startTime = models.DateTimeField(default=defTime)
