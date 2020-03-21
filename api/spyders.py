@@ -18,7 +18,7 @@ class AtCoderSpider(scrapy.Spider):
     def parse(self, response):
         contests = response.xpath('//h3[contains(text(),"Upcoming Contests")]/following-sibling::div[1]//tbody/tr')
         for contest in contests:
-            name = contest.xpath('td[2]//text()').extract_first() 
+            name = contest.xpath('td[2]/a//text()').extract_first() 
             startTime = datetime.strptime(contest.xpath('td[1]//text()').extract_first(), '%Y-%m-%d %H:%M:%S%z').astimezone(pytz.utc)
             durationExtract = contest.xpath('td[3]//text()').extract_first().split(':') 
             durationExtract = list(map(int,durationExtract if len(durationExtract)>2 else ["00"]+durationExtract))
@@ -43,7 +43,7 @@ class CodeChefSpider(scrapy.Spider):
         contests = response.xpath('//h3[contains(text(),"Future Contests")]/following-sibling::div[1]//tbody/tr')
         for contest in contests:
             services.save_contest({
-                'name': contest.xpath('td[2]//text()').extract_first(),
+                'name': contest.xpath('td[2]/a//text()').extract_first(),
                 'startTime': datetime.strptime(contest.xpath('td[3]//@data-starttime').extract_first(), '%Y-%m-%dT%H:%M:%S%z').astimezone(pytz.utc),
                 'endTime': datetime.strptime(contest.xpath('td[4]//@data-endtime').extract_first(), '%Y-%m-%dT%H:%M:%S%z').astimezone(pytz.utc),
                 'site' : CodeChefSpider.name,
