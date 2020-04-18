@@ -1,7 +1,7 @@
 from rest_framework.response import Response
 from .models import Contest
 from .serializers import ContestSerializer
-from .spyders import AtCoderSpider,CodeChefSpider,HackerRankSpider
+from .spyders import AtCoderSpider,CodeChefSpider,HackerRankSpider,HackerEarthSpider
 from rest_framework import status
 from twisted.internet import reactor
 import scrapy
@@ -32,6 +32,7 @@ def get_crawl():
   runner.crawl(CodeChefSpider)
   runner.crawl(AtCoderSpider)
   runner.crawl(HackerRankSpider)
+  runner.crawl(HackerEarthSpider)
   d=runner.join()
   d.addBoth(lambda _: reactor.stop())
   reactor.run(installSignalHandlers=0)

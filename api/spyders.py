@@ -75,3 +75,37 @@ class HackerRankSpider(scrapy.Spider):
                 'site' : HackerRankSpider.name,
                 'url': HackerRankSpider.path
             })
+
+class HackerEarthSpider(scrapy.Spider):
+    #Spider Mandatory Fields
+    name = "HackerEarth" 
+    start_urls = ['https://www.hackerearth.com/challenges/']
+    #Custom Fields
+    path = "https://www.hackerearth.com/"
+        
+    def parse(self, response):
+        contests = response.xpath('//*[@id="challenge-container"]/div[2]/div[3]//@href')  
+        for contest in contests:
+            next_page = response.urljoin(contest.get())
+            yield scrapy.Request(next_page, callback=self.parse_contest)
+            
+    def parse_contest(self, response):
+        tz = pytz.timezone('Etc/GMT+5')
+
+        startTimeText = response.xpath('/html/body/div[10]/div/div[1]/div[2]/div[3]/div/div/p[1]/span[2]/text()').get()
+        startTime = datetime.strptime(startTimeText[:16], '%b %d, %I:%M %p')        
+        startTime = startTime.replace(year=datetime.now().year,second=0,microsecond=0)
+        startTime = tz.localize(startTime) 
+
+        endTimeText = response.xpath('/html/body/div[10]/div/div[1]/div[2]/div[3]/div/div/p[2]/span[2]/text()').get()
+        endTime = datetime.strptime(endTimeText[:16], '%b %d, %I:%M %p')        
+        endTime = endTime.replace(year=datetime.now().year,second=0,microsecond=0)
+        endTime = tz.localize(endTime) 
+
+        services.save_contest({
+            'name': response.xpath('/html/body/div[10]/div/div[1]/div[2]/div[3]/h1/@title').get(),
+            'startTime': startTime,
+            'endTime': endTime,
+            'site' : HackerEarthSpider.name,
+            'url': response.request.url
+        })
