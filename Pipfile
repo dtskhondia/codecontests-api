@@ -13,6 +13,7 @@ django-cors-headers = "*"
 numpy = "*"
 requests = "*"
 twisted = {git = "https://github.com/twisted/twisted.git"}
+twisted-iocpsupport = {version = "*",sys_platform = "== 'win32'"} 
 python-decouple = "*"
 pypiwin32 = {version = "*",sys_platform = "== 'win32'"}
 pytz = "*"
