@@ -2,6 +2,7 @@
 from datetime import datetime
 from django.db import models
 
+
 class Contest(models.Model):
     """Contest Model"""
     id = models.AutoField(primary_key=True)
@@ -10,4 +11,4 @@ class Contest(models.Model):
     startTime = models.DateTimeField(default=defTime)
     endTime = models.DateTimeField(default=defTime)
     site = models.CharField(max_length=255)
-    url = models.CharField(max_length=255,null=True)
+    url = models.CharField(max_length=255, null=True)

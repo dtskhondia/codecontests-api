@@ -23,12 +23,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = '&j+jx54%eb2lm9p6eoi7r+#jnfqltxcaf&#g9w3mqet4)$+q93'
 
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','&j+jx54%eb2lm9p6eoi7r+#jnfqltxcaf&#g9w3mqet4)$+q93')
+SECRET_KEY = os.environ.get(
+    'DJANGO_SECRET_KEY', '&j+jx54%eb2lm9p6eoi7r+#jnfqltxcaf&#g9w3mqet4)$+q93')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = ['*']
 
@@ -90,7 +91,6 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 
 DATABASES = {
     'default': {

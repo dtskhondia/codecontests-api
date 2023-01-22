@@ -1,6 +1,6 @@
-from django.conf.urls import url
+from django.urls import re_path
 from . import views
 
 urlpatterns = [
-    url(r'^contests/$', views.ContestList.as_view()),
+    re_path(r'^contests/$', views.ContestList.as_view()),
 ]
